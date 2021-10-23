@@ -6,7 +6,7 @@ class WeatherForecastService {
     async execute(address: AddressForecast) {
         const { city, state, country } = address;
 
-        const latlong: any = await apiLatLong.get(`search?q=${city}&format=geojson`)
+        const latlong: any = await apiLatLong.get(`search?q=${city}&${state}&${country}&format=geojson`)
             .then((response) => {
                 console.log("teste", response.data)
                 return response.data
