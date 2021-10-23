@@ -15,17 +15,15 @@ class WeatherForecastService {
                 console.error("ops! ocorreu um erro" + err);
             });
 
-            console.log(latlong)
         const longitude = latlong ? latlong.features[0].geometry.coordinates[0] : {};
         const latitude = latlong ? latlong.features[0].geometry.coordinates[1] : {};
 
         return apiWeather.get(`onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`)
             .then((response) => {
-                console.log("teste", response.data)
                 return response.data
             })
             .catch((err) => {
-                console.error("ops! ocorreu um erro" + err);
+                console.error("Oops! Something wrong occurred" + err);
             });
     }
 }
