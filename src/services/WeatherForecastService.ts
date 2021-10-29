@@ -8,11 +8,11 @@ class WeatherForecastService {
 
         const latlong: any = await apiLatLong.get(`search?q=${city}&${state}&${country}&format=geojson`)
             .then((response) => {
-                console.log("teste", response.data)
                 return response.data
             })
             .catch((err) => {
-                console.error("ops! ocorreu um erro" + err);
+                console.error('Oops! Something wrong occurred - API 1' + err);
+                throw err
             });
 
         const longitude = latlong ? latlong.features[0].geometry.coordinates[0] : {};
@@ -23,7 +23,7 @@ class WeatherForecastService {
                 return response.data
             })
             .catch((err) => {
-                console.error("Oops! Something wrong occurred" + err);
+                console.error('Oops! Something wrong occurred - API 2' + err);
             });
     }
 }
